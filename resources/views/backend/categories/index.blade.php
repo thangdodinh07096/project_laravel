@@ -47,42 +47,26 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Tên danh mục</th>
-                                    <th>Hãng</th>
-                                    <th>Số lượng</th>
-                                    <th>Mô tả</th>
+                                    <th>Mục cha</th>
+                                    <th>Thời gian</th>
+                                    <th>Dộ sâu</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Iphone</td>
-                                    <td>Iphone</td>
-                                    <td>1200</td>
-                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Samsung</td>
-                                    <td>Samsung</td>
-                                    <td>1000</td>
-                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Oppo</td>
-                                    <td>Oppo</td>
-                                    <td>950</td>
-                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Xiaomi</td>
-                                    <td>Xiaomi</td>
-                                    <td>600</td>
-                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                </tr>
+
+                                @foreach($categories as $category)
+                                   <tr>
+                                        <td>{{ $category->id }}</td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->parent_id }}</td>
+                                        <td>{{ $category->created_at }}</td>
+                                        <td>{{ $category->depth }}</td>
+                                    </tr>
+                                @endforeach
+                                
                                 </tbody>
                             </table>
+                            {!! $categories->links() !!}
                         </div>
                         <!-- /.card-body -->
                     </div>

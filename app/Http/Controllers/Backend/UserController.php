@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Model\User;
+use App\Models\UserInfo;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,7 +16,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('backend.users.index');
+        // $users = User::get();
+        $users = User::paginate(15);
+        // $users = User::simplePaginate(15);
+
+        return view('backend.users.index')->with([
+            'users' => $users
+        ]);
     }
 
     /**
@@ -46,7 +54,13 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        // $user = User::find($id);
+        // $userInfo = $user->userInfo;
+        // dd($userInfo);
+        
+        $userInfo = UserInfo::find($id);
+        $user = $userInfo->user;
+        dd($user);
     }
 
     /**
