@@ -52,6 +52,7 @@
                                     <th>Thời gian</th>
                                     <th>Status</th>
                                     <th>Mô tả</th>
+                                    <th>#</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -63,9 +64,11 @@
                                         <td>{{ $product->category->name }}</td>
                                         <td>{{ $product->user->name }}</td>
                                         <td>{{ $product->created_at }}</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
+                                        <td>{{ $product->status }}</td>
                                         <td>{{ $product->slug }}</td>
-
+                                        <td>
+                                            <a href="/admin/products/{{ $product->id }}" "email me">email me</a>
+                                        </td>
                                         {{-- <td>{{ $product->id }}</td>
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->sale_price }}</td>

@@ -15,7 +15,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        return view('frontend.shop.index');
+        return view('frontend.shop');
     }
 
     /**

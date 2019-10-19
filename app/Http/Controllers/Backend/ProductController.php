@@ -50,10 +50,10 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
+        // $product = Product::find($id);
         
-        //$products = Product::find($id);
-        //dd($product->category->name);
+        $products = Product::find($id);
+        dd($product->category->name);
         //dd($products->user->name);
         //return view('backend.products.create')
     }
