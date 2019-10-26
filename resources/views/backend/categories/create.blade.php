@@ -31,29 +31,43 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form">
+                        <form role="form" method="post" action="{{ route('backend.category.store') }}">
+                            @csrf
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên danh mục</label>
-                                    <input type="text" class="form-control" id="" placeholder="Điền tên danh mục sản phẩm ">
+                                    <input type="text" class="form-control" name="name" placeholder="Điền tên danh mục sản phẩm ">
                                 </div>
-                                <div class="form-group">
-                                    <label>Hãng</label>
-                                    <select class="form-control select2" style="width: 100%;">
-                                        <option>--Chọn hãng---</option>
-                                        <option>Iphone</option>
-                                        <option>Samsung</option>
-                                        <option>Oppo</option>
-                                        <option>Xiaomi</option>
-                                    </select>
+                                @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+        
+                                
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Mục cha</label>
+                                            <input type="text" name="parent_id" class="form-control" placeholder=" Điền mục cha">
+                                        </div>
+                                        @error('parent_id')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Độ sâu</label>
+                                            <input type="text" name="depth" class="form-control" placeholder="Điền độ sâu">
+                                        </div>
+                                        @error('depth')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Số lượng</label>
-                                    <input type="number" class="form-control" id="" placeholder="Điền số lượng">
-                                </div>
+
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Mô tả sản phẩm</label>
-                                    <textarea class="textarea" placeholder="Place some text here"
+                                    <textarea class="textarea" name="content" placeholder="Place some text here"
                                               style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
                                         
                                     </textarea>
@@ -62,8 +76,8 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-default">Huỷ bỏ</button>
-                                <button type="submit" class="btn btn-sucess">Tạo mới</button>
+                                <a href="{{ route('backend.category.index') }}" class="btn btn-default">Huỷ bỏ</a>
+                                <button type="submit" class="btn btn-success">Tạo mới</button>
                             </div>
                         </form>
                     </div>

@@ -51,7 +51,7 @@
                                     <th>User</th>
                                     <th>Thời gian</th>
                                     <th>Status</th>
-                                    <th>Mô tả</th>
+                                    {{-- <th>Mô tả</th> --}}
                                     <th>#</th>
                                 </tr>
                                 </thead>
@@ -65,19 +65,19 @@
                                         <td>{{ $product->user->name }}</td>
                                         <td>{{ $product->created_at }}</td>
                                         <td>{{ $product->status }}</td>
-                                        <td>{{ $product->slug }}</td>
+                                        {{-- <td>{!! $product->content !!}</td> --}}
                                         <td>
-                                            <a href="/admin/products/{{ $product->id }}" "email me">email me</a>
+                                            <a href="{{ route('backend.product.show', $product->id) }}" class="btn btn-info">Detail</a>
+                                            <a href="{{ route('backend.product.edit', $product->id) }}" class="btn btn-warning">Edit</a>
+                                            <form style="display: inline-block;" action="{{ route('backend.product.destroy', $product->id) }}" method="post" accept-charset="utf-8">
+                                                @csrf
+                                                {{method_field('delete')}}
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
                                         </td>
-                                        {{-- <td>{{ $product->id }}</td>
-                                        <td>{{ $product->name }}</td>
-                                        <td>{{ $product->sale_price }}</td>
-                                        <td>{{ $product->created_at }}</td>
-                                        <td>{{ $product->status }}</td>
-                                        <td>{{ $product->content }}</td> --}}
                                     </tr>
                                 @endforeach
-                                
+
                                 </tbody>
                             </table>
                             {!! $products->links() !!}

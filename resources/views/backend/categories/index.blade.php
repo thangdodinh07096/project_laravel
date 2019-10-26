@@ -50,6 +50,7 @@
                                     <th>Mục cha</th>
                                     <th>Thời gian</th>
                                     <th>Dộ sâu</th>
+                                    <th>#</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -61,9 +62,18 @@
                                         <td>{{ $category->parent_id }}</td>
                                         <td>{{ $category->created_at }}</td>
                                         <td>{{ $category->depth }}</td>
+                                        <td>
+                                            <a href="{{ route('backend.category.show', $category->id) }}" class="btn btn-info">Detail</a>
+                                            <a href="{{ route('backend.category.edit', $category->id) }}" class="btn btn-warning">Edit</a>
+                                            <form style="display: inline-block;" action="{{ route('backend.category.destroy', $category->id) }}" method="post" accept-charset="utf-8">
+                                               @csrf
+                                               {{method_field('delete')}}
+                                               <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
-                                
+
                                 </tbody>
                             </table>
                             {!! $categories->links() !!}

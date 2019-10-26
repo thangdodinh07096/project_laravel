@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+// use Illuminate\Http\Request;
+use App\Http\Requests\StoreCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -37,9 +39,18 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        //
+        // dd($request->all());
+        $category = new Category();
+        $category->name = $request->get('name');
+        $category->slug = \Illuminate\Support\Str::slug($request->get('name'));
+        $category->parent_id = $request->get('parent_id');
+        $category->depth = $request->get('depth');
+        $category->content = $request->get('content');
+        $category->save();
+
+        return redirect()->route('backend.category.index');
     }
 
     /**
@@ -50,15 +61,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $products = Category::find($id)->products()->where('status', 2)->get();
-
-        // $category = Category::find($id);
-        // $products = $category->products;
-        //dd($products);
-        
-        foreach ($products as $product) {
-            echo $product->name . "<br>";
-        }
+        $category = Category::find($id);
+        return view('backend.categories.show')->with('category', $category);
     }
 
     /**
@@ -69,7 +73,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::Find($id);
+        return view('backend.categories.edit')->with('category', $category);
     }
 
     /**
@@ -79,9 +84,23 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreCategoryRequest $request, $id)
     {
-        //
+        $name = $request->get('name');
+        $slug = \Illuminate\Support\Str::slug($request->get('name'));
+        $parent_id = $request->get('parent_id');
+        $depth = $request->get('depth');
+        $content = $request->get('content');
+
+        $category = Category::Find($id);
+        $category->name = $name;
+        $category->slug = $slug;
+        $category->parent_id = $parent_id;
+        $category->depth = $depth;
+        $category->content = $content;
+        $category->save();
+
+        return redirect()->route('backend.category.index');
     }
 
     /**
@@ -92,6 +111,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        Category::destroy($id);
+        return redirect()->route('backend.category.index');    }
 }
