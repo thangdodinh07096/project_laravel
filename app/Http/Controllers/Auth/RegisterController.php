@@ -90,10 +90,10 @@ class RegisterController extends Controller
                         ?: redirect($this->redirectPath());
     }
 
-     protected function guard()
-    {
-        return Auth::guard();
-    }
+//     protected function guard()
+//    {
+//        return Auth::guard();
+//    }
 
     /**
      * The user has been registered.

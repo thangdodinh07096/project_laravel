@@ -87,14 +87,18 @@
                                     <div class="input-group">
                                         <div class="custom-file">
 {{--                                            <input type="file" class="custom-file-input" id="exampleInputFile" name="image">--}}
-                                            <input type="file" class="custom-file-input" id="exampleInputFile" name="images[]" multiple>
-                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                            <input type="file" class="custom-file-input" id="inputFile" name="images[]" multiple>
+                                            <label class="custom-file-label" for="inputFile">Choose file</label>
                                         </div>
                                         <div class="input-group-append">
                                             <span class="input-group-text" id="">Upload</span>
                                         </div>
                                     </div>
                                 </div>
+
+{{--                                @error('image')--}}
+{{--                                <div class="alert alert-danger">{{ $message }}</div>--}}
+{{--                                @enderror--}}
 
                                 <div class="form-group">
                                     <label>Trạng thái sản phẩm</label>

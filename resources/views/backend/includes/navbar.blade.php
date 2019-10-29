@@ -109,7 +109,7 @@
                         <span class="float-right text-muted text-sm">2 days</span>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                    <a href="#" class="dropdown-item dropdown-footer">Log Out</a>
                 </div>
             </li>
             <li class="nav-item">
