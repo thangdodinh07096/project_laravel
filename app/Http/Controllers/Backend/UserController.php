@@ -16,10 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $users = User::get();
         $users = User::paginate(15);
-        // $users = User::simplePaginate(15);
-
         return view('backend.users.index')->with([
             'users' => $users
         ]);
@@ -43,7 +40,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->password = bcrypt($request->password);
+        $save = $user->save();
+        if ($save) {
+            $request->session()->flash('success', 'Tạo user thành công' . '<br>');
+        } else {
+            $request->session()->flash('fail', 'Tạo user thất bại' . '<br>');
+        }
+        return redirect()->route('backend.user.index');
     }
 
     /**
@@ -54,10 +61,6 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        // $user = User::find($id);
-        // $userInfo = $user->userInfo;
-        // dd($userInfo);
-        
         $userInfo = UserInfo::find($id);
         $user = $userInfo->user;
         dd($user);
@@ -71,7 +74,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('backend.users.edit')->with('user', $user);
     }
 
     /**
@@ -83,7 +87,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $name = $request->get('name');
+        $email = $request->get('email');
+        $user = User::find($id);
+        $user->name = $name;
+        $user->email = $email;
+        $save = $user->save();
+        if ($save) {
+            $request->session()->flash('success_update', 'Cập nhật user thành công' . '<br>');
+        } else {
+            $request->session()->flash('fail_update', 'Cập nhật user thất bại' . '<br>');
+        }
+
+        return redirect()->route('backend.user.index');
     }
 
     /**
@@ -94,6 +110,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return redirect()->route('backend.user.index');
     }
 }

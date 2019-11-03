@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Support\Facades\Validator;
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreCategoryRequest;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -48,7 +49,13 @@ class CategoryController extends Controller
         $category->parent_id = $request->get('parent_id');
         $category->depth = $request->get('depth');
         $category->content = $request->get('content');
-        $category->save();
+        $save = $category->save();
+        if ($save) {
+            $request->session()->flash('success', 'Tạo danh mục sản phẩm thành công' . '<br>');
+        } else {
+            $request->session()->flash('fail', 'Tạo danh mục sản phẩm thất bại' . '<br>');
+        }
+
 
         return redirect()->route('backend.category.index');
     }
@@ -98,7 +105,13 @@ class CategoryController extends Controller
         $category->parent_id = $parent_id;
         $category->depth = $depth;
         $category->content = $content;
-        $category->save();
+        $save = $category->save();
+
+        if ($save) {
+            $request->session()->flash('success_update', 'Cập nhật danh mục sản phẩm thành công' . '<br>');
+        } else {
+            $request->session()->flash('fail_update', 'Cập nhật danh mục sản phẩm thất bại' . '<br>');
+        }
 
         return redirect()->route('backend.category.index');
     }

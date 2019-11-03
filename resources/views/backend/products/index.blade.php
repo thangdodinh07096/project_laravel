@@ -17,6 +17,31 @@
             </div><!-- /.row -->
     </div>
     <!-- /.container-fluid -->
+
+    @if (session()->has('success'))
+        <h3 style="color: green">{!! session()->get('success') !!}</h3>
+    @endif
+
+{{--    @if (session()->has('success_img_fail'))--}}
+{{--        <h3 style="color: green">{!! session()->get('success_img_fail') !!}</h3>--}}
+{{--    @endif--}}
+
+{{--    @if (session()->has('success_img'))--}}
+{{--        <h3 style="color: green">{!! session()->get('success_img') !!}</h3>--}}
+{{--    @endif--}}
+
+
+{{--    @if (session()->has('fail'))--}}
+{{--        <h3 style="color: red">{!! session()->get('fail') !!}</h3>--}}
+{{--    @endif--}}
+
+    @if (session()->has('success_update'))
+        <h3 style="color: green">{!! session()->get('success_update') !!}</h3>
+    @endif
+
+{{--    @if (session()->has('fail_update'))--}}
+{{--        <h3 style="color: red">{!! session()->get('fail_update') !!}</h3>--}}
+{{--    @endif--}}
 @endsection
 
 @section('content')

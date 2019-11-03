@@ -56,7 +56,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProductRequest $request)
+    public function store(Request $request)
     {
 
 //        $image_info = [];
@@ -129,25 +129,23 @@ class ProductController extends Controller
         $product->content = $request->get('content');
         $product->status = $request->get('status');
         $product->user_id = Auth::user()->id;
-        dd($product);
-        $product->save();
+//        dd($product);
+        $save = $product->save();
 
         foreach ($image_info as $image){
             $img = new Image();
             $img->name = $image['nameFile'];
             $img->path = $image['url'];
             $img->product_id = $product->id;
-            $img->save();
+            $save_img= $img->save();
         }
 
-//        foreach ($image_info as $image){
-//            $img = new Image();
-//            $img->name = $image['nameFile'];
-//            $img->path = $image['url'];
-//            $img->product_id = $product->id;
-////            dd($img->name);
-//            $img->save();
-//        }
+        if ($save && $save_img) {
+            $request->session()->flash('success', 'Tạo sản phẩm thành công' . '<br>');
+        } else {
+            $request->session()->flash('fail', 'Tạo sản phẩm thất bại' . '<br>');
+        }
+
         return redirect()->route('backend.product.index');
     }
 
@@ -212,7 +210,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreProductRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $image_info = [];
         if($request->hasFile('images')) {
@@ -245,7 +243,7 @@ class ProductController extends Controller
         $product->content = $content;
         $product->status = $status;
         $product->user_id = Auth::user()->id;
-        $product->save();
+        $save = $product->save();
 
         foreach ($image_info as $image){
             $img = new Image();
@@ -253,6 +251,11 @@ class ProductController extends Controller
             $img->path = $image['url'];
             $img->product_id = $product->id;
             $img->save();
+        }
+        if ($save) {
+            $request->session()->flash('success_update', 'Cập nhật sản phẩm thành công' . '<br>');
+        } else {
+            $request->session()->flash('fail_update', 'Cập nhật sản phẩm thất bại' . '<br>');
         }
         return redirect()->route('backend.product.index');
     }

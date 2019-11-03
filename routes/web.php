@@ -20,7 +20,12 @@
 	    //Quản lý người dùng
 	    Route::group(['prefix' => 'users'], function(){
 	        Route::get('/', 'UserController@index')->name('backend.user.index');
+            Route::get('/show/{id?}', 'UserController@show')->name('backend.user.show');
 	        Route::get('/create', 'UserController@create')->name('backend.user.create');
+            Route::post('/', 'UserController@store')->name('backend.user.store');
+            Route::get('/edit/{id?}', 'UserController@edit')->name('backend.user.edit');
+            Route::put('/update/{id?}', 'UserController@update')->name('backend.user.update');
+            Route::delete('/destroy/{id?}', 'UserController@destroy')->name('backend.user.destroy');
 	    });
 	    //Quản lý danh mục sản phẩm
 	    Route::group(['prefix' => 'categories'], function(){
@@ -55,7 +60,13 @@
 	    });
 	});
 
-Auth::routes();
-// Route::get('/auth/login', 'LoginController@index')->name('auth.login');
-// Route::get('/', 'LoginController@logout')->name('auth.logout');
-Route::get('/home', 'HomeController@index')->name('home');
+    Auth::routes();
+    // Route::get('/auth/login', 'LoginController@index')->name('auth.login');
+    // Route::get('/', 'LoginController@logout')->name('auth.logout');
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('set', 'SessionController@set');
+    Route::get('get', 'SessionController@get');
+    Route::get('get2', 'SessionController@get2');
+    Route::get('setCookie', 'CookieController@set');
+    Route::get('getCookie', 'CookieController@get');

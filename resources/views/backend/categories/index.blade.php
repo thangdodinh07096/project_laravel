@@ -3,20 +3,36 @@
 @section('content-header')
     <!-- Content Header -->
     <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Danh mục sản phẩm</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Danh mục sản phẩm</a></li>
-                        <li class="breadcrumb-item active">Danh sách</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Danh mục sản phẩm</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Danh mục sản phẩm</a></li>
+                    <li class="breadcrumb-item active">Danh sách</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
     </div>
     <!-- /.container-fluid -->
+
+    @if (session()->has('success'))
+        <h3 style="color: green">{!! session()->get('success') !!}</h3>
+    @endif
+
+{{--    @if (session()->has('fail'))--}}
+{{--        <h3 style="color: red">{!! session()->get('fail') !!}</h3>--}}
+{{--    @endif--}}
+
+{{--    @if (session()->has('fail_update'))--}}
+{{--        <h3 style="color: red">{!! session()->get('fail_update') !!}</h3>--}}
+{{--    @endif--}}
+
+    @if (session()->has('success_update'))
+        <h3 style="color: green">{!! session()->get('success_update') !!}</h3>
+    @endif
 @endsection
 
 @section('content')

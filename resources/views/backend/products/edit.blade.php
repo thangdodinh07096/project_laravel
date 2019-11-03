@@ -33,7 +33,6 @@
                     <!-- form start -->
                     <form role="form" method="post" action="{{ route('backend.product.update', $product->id) }}" enctype="multipart/form-data">
                         @csrf
-{{--                        <input name="_method" type="hidden" value="put">--}}
                         {{ method_field('PUT') }}
                         <div class="card-body">
                             <div class="form-group">
