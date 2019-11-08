@@ -13,8 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    {{$view_count}}
+{{--                        <a href="#">{{$number}}</a>--}}
                 </div>
             </div>
         </div>

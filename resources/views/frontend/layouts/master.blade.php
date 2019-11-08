@@ -13,7 +13,7 @@
 <body>
 
 <div class="super_container">
-    
+
     <!-- Header -->
     @include('frontend.includes.header')
     <!--End Header -->
@@ -21,11 +21,11 @@
     <!-- content -->
     @yield('content')
     <!--End content -->
-    
+
     <!-- newsletter -->
     @include('frontend.includes.newsletter')
     <!--End newsletter -->
-    
+
     <!-- Footer -->
     @include('frontend.includes.footer')
     <!--End Footer -->

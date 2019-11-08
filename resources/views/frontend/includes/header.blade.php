@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </div>
-        </div>      
+        </div>
     </div>
 
     <!-- Header Main -->
@@ -66,11 +66,9 @@
                                             <i class="fas fa-chevron-down"></i>
                                             <ul class="custom_list clc">
                                                 <li><a class="clc" href="#">All Categories</a></li>
-                                                <li><a class="clc" href="#">Computers</a></li>
-                                                <li><a class="clc" href="#">Laptops</a></li>
-                                                <li><a class="clc" href="#">Cameras</a></li>
-                                                <li><a class="clc" href="#">Hardware</a></li>
-                                                <li><a class="clc" href="#">Smartphones</a></li>
+                                                @foreach($categories as $cate)
+                                                <li><a class="clc" href="#">{{ $cate->name }}</a></li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>
@@ -110,14 +108,14 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Main Navigation -->
 
     <nav class="main_nav">
         <div class="container">
             <div class="row">
                 <div class="col">
-                    
+
                     <div class="main_nav_content d-flex flex-row">
 
                         <!-- Categories Menu -->
@@ -129,31 +127,28 @@
                             </div>
 
                             <ul class="cat_menu">
-                                <li><a href="#">Computers & Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>
-                                <li><a href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a></li>
-                                <li class="hassubs">
-                                    <a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
-                                    <ul>
-                                        <li class="hassubs">
-                                            <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-                                            <ul>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Smartphones & Tablets<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">TV & Audio<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">Gadgets<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">Car Electronics<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">Video Games & Consoles<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">Accessories<i class="fas fa-chevron-right"></i></a></li>
+{{--                                <li><a href="#">Computers & Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>--}}
+{{--                                <li><a href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a></li>--}}
+{{--                                <li class="hassubs">--}}
+{{--                                    <a href="#">Hardware<i class="fas fa-chevron-right"></i></a>--}}
+{{--                                    <ul>--}}
+{{--                                        <li class="hassubs">--}}
+{{--                                            <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>--}}
+{{--                                            <ul>--}}
+{{--                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>--}}
+{{--                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>--}}
+{{--                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>--}}
+{{--                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>--}}
+{{--                                            </ul>--}}
+{{--                                        </li>--}}
+{{--                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>--}}
+{{--                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>--}}
+{{--                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </li>--}}
+                                @foreach($categories as $cate)
+                                    <li><a class="clc" href="#">{{ $cate->name }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
 
@@ -227,16 +222,16 @@
             </div>
         </div>
     </nav>
-    
+
     <!-- Menu -->
 
     <div class="page_menu">
         <div class="container">
             <div class="row">
                 <div class="col">
-                    
+
                     <div class="page_menu_content">
-                        
+
                         <div class="page_menu_search">
                             <form action="#">
                                 <input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
@@ -303,7 +298,7 @@
                             <li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
                             <li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a></li>
                         </ul>
-                        
+
                         <div class="menu_contact">
                             <div class="menu_contact_item"><div class="menu_contact_icon"><img src="/frontend/images/phone_white.png" alt=""></div>+38 068 005 3570</div>
                             <div class="menu_contact_item"><div class="menu_contact_icon"><img src="/frontend/images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>

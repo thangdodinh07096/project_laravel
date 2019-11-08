@@ -70,3 +70,5 @@
     Route::get('get2', 'SessionController@get2');
     Route::get('setCookie', 'CookieController@set');
     Route::get('getCookie', 'CookieController@get');
+
+    Route::get('/home/index', 'HomeController@index')->name('home');

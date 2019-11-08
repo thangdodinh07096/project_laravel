@@ -24,6 +24,9 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(15);
+//        $img = Image::get('path');
+//        dd($products->category->name);
+
         return view('backend.products.index')->with([
             'products' => $products
         ]);
@@ -56,7 +59,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
 
 //        $image_info = [];
@@ -210,7 +213,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreProductRequest $request, $id)
     {
         $image_info = [];
         if($request->hasFile('images')) {
