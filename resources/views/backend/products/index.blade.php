@@ -76,7 +76,7 @@
                                     <th>User</th>
                                     <th>Thời gian</th>
                                     <th>Status</th>
-{{--                                     <th>Mô tả</th>--}}
+                                    <th>Ảnh</th>
                                     <th>#</th>
                                 </tr>
                                 </thead>
@@ -90,7 +90,7 @@
                                         <td>{{ $product->user->name }}</td>
                                         <td>{{ $product->created_at }}</td>
                                         <td>{{ $product->status }}</td>
-{{--                                        <td><img src="{{$product->images->path}}" alt=""></td>--}}
+                                        <td><img src="" alt=""></td>
                                         <td>
                                             <a href="{{ route('backend.product.show', $product->id) }}" class="btn btn-info">Detail</a>
                                             <a href="{{ route('backend.product.edit', $product->id) }}" class="btn btn-warning">Edit</a>

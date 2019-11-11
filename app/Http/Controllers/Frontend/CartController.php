@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 // use App\Model\User;
+use App\Models\Product;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -20,6 +22,16 @@ class CartController extends Controller
         $categories = Cache::remember('categories', 10, function() {
             return DB::table('categories')->get();
         });
-        return view('frontend.cart')->with('categories',$categories);
+
+        $all = Cart::content();
+
+        return view('frontend.cart')->with(['categories'=>$categories, 'all' => $all]);
+    }
+
+    public function add($id){
+//        dd($id);
+        $product = Product::find($id);
+        Cart::add($id, $product->name, 1, $product->sale_price);
+        return redirect()->route('frontend.cart.index');
     }
 }

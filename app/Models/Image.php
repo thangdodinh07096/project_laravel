@@ -8,7 +8,7 @@ class Image extends Model
 {
     protected $table = 'images';
 
-    public function product() {
-        return $this->belongsTo('App\Models\Product');
-    }
+//    public function product() {
+//        return $this->belongsTo('App\Models\Product');
+//    }
 }

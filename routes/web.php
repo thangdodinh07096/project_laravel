@@ -44,16 +44,17 @@
 	    'namespace' => 'Frontend',
 	    'prefix' => 'online'
 	], function (){
-	    Route::get('/index', 'IndexController@index')->name('frontend.index');
-	    Route::group(['prefix' => 'products'], function(){
-	       Route::get('/', 'ProductController@index')->name('frontend.product.index');
+	    Route::group(['prefix' => 'index'], function(){
+	       Route::get('/', 'IndexController@index')->name('frontend.index');
+
 	    });
 	    Route::group(['prefix' => 'shop'], function(){
 	        Route::get('/', 'ShopController@index')->name('frontend.shop');
 	    });
 	    //Quản lý danh mục sản phẩm
 	    Route::group(['prefix' => 'cart'], function(){
-	        Route::get('/', 'CartController@index')->name('frontend.cart');
+	        Route::get('/', 'CartController@index')->name('frontend.cart.index');
+	        Route::get('/add/{id}', 'CartController@add')->name('frontend.cart.add');
 	    });
 	    Route::group(['prefix' => 'contact'], function(){
 	        Route::get('/', 'ContactController@index')->name('frontend.contact');
@@ -61,7 +62,7 @@
 	});
 
     Auth::routes();
-    // Route::get('/auth/login', 'LoginController@index')->name('auth.login');
+     Route::get('/auth/logout', 'LoginController@logout')->name('auth.logout');
     // Route::get('/', 'LoginController@logout')->name('auth.logout');
     Route::get('/home', 'HomeController@index')->name('home');
 

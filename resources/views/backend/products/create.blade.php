@@ -96,9 +96,9 @@
                                     </div>
                                 </div>
 
-{{--                                @error('image')--}}
-{{--                                <div class="alert alert-danger">{{ $message }}</div>--}}
-{{--                                @enderror--}}
+                                @error('images')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label>Trạng thái sản phẩm</label>

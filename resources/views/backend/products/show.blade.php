@@ -36,10 +36,13 @@
                 </h3>
             </div>
             <div class="col-lg-6">
-                <img src="#" alt="">
+                <h3>Ảnh sản phẩm</h3>
+                @foreach($path as $image)
+                <img style="width: 120px" src="/{{$image->path}}" alt="">
+                @endforeach
             </div>
             <h2 class="col-lg-12">
-                <p>Mô tả: {{ $product->content }}</p>
+                <p>Mô tả: {!! $product->content !!}</p>
             </h2>
         </div>
     </div>

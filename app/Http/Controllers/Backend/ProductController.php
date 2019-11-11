@@ -24,8 +24,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(15);
-//        $img = Image::get('path');
-//        dd($products->category->name);
+
 
         return view('backend.products.index')->with([
             'products' => $products
@@ -62,59 +61,12 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
 
-//        $image_info = [];
-//        if($request->hasFile('images')) {
-//            $images = $request->file('images');
-//            foreach ( $images as $key => $image){
-//                $nameFile = $image->getClientOriginalName();
-//                $url= 'storage/images/'.$nameFile;
-//                Storage::disk('public')->putFileAs('product', $image, $nameFile);
-//                $image_info[] = [
-//                    'url' => $url,
-//                    'nameFile' => $nameFile
-//                ];
-//            }
-//        }
-
-//        $images = $request->image;
-//
-//        if ($request->hasFile('images')) {
-//            $attributes = [];
-//            foreach ($images as $key => $value) {
-//                $name_image = $value->getClientOriginalName();
-//                $attribute['Image.' . $key] = $name_image;
-//            }
-//        } else {
-//            $attributes = [
-//                'image' => 'Ảnh',
-//            ];
-//        }
-//        $validator = Validator::make($request->all(), $rules, $messages, $attributes);
-//        if ($validator->fails()) {
-//            return back()
-//                ->withErrors($validator)
-//                ->withInput();
-//        }
-
-//        $path_images = [];
-//        foreach ($images as $image) {
-//            //$img = new Image();
-//            $type_image = $image->getClientOriginalExtension();
-//            $name_image = $image->getClientOriginalName();
-//            $time = time();
-//             $img->path = $image['url'];
-//             $img->product_id = $product->id;
-//             $img->save();
-//            $path = $image->storeAS('public/products', $name_image . '_' . $time . '.' . $type_image);
-//            $path_images = $path;
-//        }
-
         $image_info = [];
         if($request->hasFile('images')) {
             $images = $request->file('images');
             foreach ( $images as $key => $image){
                 $nameFile = $image->getClientOriginalName();
-                $url= 'storage/images/'.$nameFile;
+                $url= 'storage/product/'.$nameFile;
                 Storage::disk('public')->putFileAs('product', $image, $nameFile);
                 $image_info[] = [
                     'url' => $url,
@@ -162,8 +114,11 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $category = Category::find($product->category_id);
+        $product_iamges = Product::with('images')->find($id);
+        $path = $product_iamges->images;
         return view('backend.products.show')->with(['product' => $product,
-                                                        'category' => $category]);
+                                                        'category' => $category,
+                                                        'path' => $path]);
     }
 
     /**
@@ -220,7 +175,7 @@ class ProductController extends Controller
             $images = $request->file('images');
             foreach ( $images as $key => $image){
                 $nameFile = $image->getClientOriginalName();
-                $url= 'storage/images/'.$nameFile;
+                $url= 'storage/product/'.$nameFile;
                 Storage::disk('public')->putFileAs('product', $image, $nameFile);
                 $image_info[] = [
                     'url' => $url,

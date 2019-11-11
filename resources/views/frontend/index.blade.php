@@ -280,7 +280,8 @@ One Tech
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
+{{--                                                    <button href="/online/cart/add/{{$product->id}}" class="product_cart_button">12312312</button>--}}
+                                                    <a href="/online/cart/add/{{$product->id}}" class="product_cart_button btn">Add to Cart</a>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
