@@ -25,7 +25,7 @@ Contact
 							<div class="contact_info_image"><img src="/frontend/images/contact_1.png" alt=""></div>
 							<div class="contact_info_content">
 								<div class="contact_info_title">Phone</div>
-								<div class="contact_info_text">+38 068 005 3570</div>
+								<div class="contact_info_text">+84 369 543 363</div>
 							</div>
 						</div>
 
@@ -34,7 +34,7 @@ Contact
 							<div class="contact_info_image"><img src="/frontend/images/contact_2.png" alt=""></div>
 							<div class="contact_info_content">
 								<div class="contact_info_title">Email</div>
-								<div class="contact_info_text">fastsales@gmail.com</div>
+								<div class="contact_info_text">thangdodinh0703@gmail.com</div>
 							</div>
 						</div>
 
@@ -43,7 +43,7 @@ Contact
 							<div class="contact_info_image"><img src="/frontend/images/contact_3.png" alt=""></div>
 							<div class="contact_info_content">
 								<div class="contact_info_title">Address</div>
-								<div class="contact_info_text">10 Suffolk at Soho, London, UK</div>
+								<div class="contact_info_text">54, Phạm Ngọc Đa, thị trấn Tiên Lãng, huyện Tiên Lãng, Hải Phòng</div>
 							</div>
 						</div>
 

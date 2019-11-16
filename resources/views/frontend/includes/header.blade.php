@@ -6,8 +6,8 @@
         <div class="container">
             <div class="row">
                 <div class="col d-flex flex-row">
-                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="/frontend/images/phone.png" alt=""></div>+38 068 005 3570</div>
-                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="/frontend/images/mail.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="/frontend/images/phone.png" alt=""></div>+84 369 543 363</div>
+                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="/frontend/images/mail.png" alt=""></div><a href="mailto:fastsales@gmail.com">thangdodinh0703@gmail.com</a></div>
                     <div class="top_bar_content ml-auto">
                         <div class="top_bar_menu">
                             <ul class="standard_dropdown top_bar_dropdown">
@@ -20,7 +20,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
+                                    <a href="#">VNĐ VietNam Dong<i class="fas fa-chevron-down"></i></a>
                                     <ul>
                                         <li><a href="#">EUR Euro</a></li>
                                         <li><a href="#">GBP British Pound</a></li>
@@ -49,7 +49,7 @@
                 <!-- Logo -->
                 <div class="col-lg-2 col-sm-3 col-3 order-1">
                     <div class="logo_container">
-                        <div class="logo"><a href="#">OneTech</a></div>
+                        <div class="logo"><a href="{{ route('frontend.index') }}">MyShop</a></div>
                     </div>
                 </div>
 
@@ -67,7 +67,7 @@
                                             <ul class="custom_list clc">
                                                 <li><a class="clc" href="#">All Categories</a></li>
                                                 @foreach($categories as $cate)
-                                                <li><a class="clc" href="#">{{ $cate->name }}</a></li>
+                                                <li><a class="clc" href="/online/shop/show/{{$cate->id}}">{{ $cate->name }}</a></li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -95,7 +95,7 @@
                             <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                 <div class="cart_icon">
                                     <img src="/frontend/images/cart.png" alt="">
-                                    <div class="cart_count"><span>10</span></div>
+                                    <div class="cart_count"><span>{{ $cart }}</span></div>
                                 </div>
                                 <div class="cart_content">
                                     <div class="cart_text"><a href="/online/cart">Cart</a></div>
@@ -127,27 +127,8 @@
                             </div>
 
                             <ul class="cat_menu">
-{{--                                <li><a href="#">Computers & Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>--}}
-{{--                                <li><a href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a></li>--}}
-{{--                                <li class="hassubs">--}}
-{{--                                    <a href="#">Hardware<i class="fas fa-chevron-right"></i></a>--}}
-{{--                                    <ul>--}}
-{{--                                        <li class="hassubs">--}}
-{{--                                            <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>--}}
-{{--                                            <ul>--}}
-{{--                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>--}}
-{{--                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>--}}
-{{--                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>--}}
-{{--                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>--}}
-{{--                                            </ul>--}}
-{{--                                        </li>--}}
-{{--                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>--}}
-{{--                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>--}}
-{{--                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>--}}
-{{--                                    </ul>--}}
-{{--                                </li>--}}
                                 @foreach($categories as $cate)
-                                    <li><a class="clc" href="#">{{ $cate->name }}</a></li>
+                                    <li><a class="clc" href="/online/shop/show/{{$cate->id}}">{{ $cate->name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -158,20 +139,7 @@
                             <ul class="standard_dropdown main_nav_dropdown">
                                 <li><a href="/online/index">Home<i class="fas fa-chevron-down"></i></a></li>
                                 <li class="hassubs">
-                                    <a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
-                                    <ul>
-                                        <li>
-                                            <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                            <ul>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                    </ul>
+                                    <a href="{{ route('frontend.shop') }}">Shop<i class="fas"></i></a>
                                 </li>
                                 <li class="hassubs">
                                     <a href="#">Featured Brands<i class="fas fa-chevron-down"></i></a>
@@ -201,7 +169,7 @@
                                         <li><a href="/online/contact">Contact<i class="fas fa-chevron-down"></i></a></li>
                                     </ul>
                                 </li>
-                                <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
+                                <li><a href="{{ route('frontend.cart.index') }}">Cart<i class="fas fa-chevron-down"></i></a></li>
                                 <li><a href="/online/contact">Contact<i class="fas fa-chevron-down"></i></a></li>
                             </ul>
                         </div>

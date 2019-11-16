@@ -115,6 +115,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $category = Category::find($product->category_id);
         $product_iamges = Product::with('images')->find($id);
+//        dd($product_iamges);
         $path = $product_iamges->images;
         return view('backend.products.show')->with(['product' => $product,
                                                         'category' => $category,
@@ -129,7 +130,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $user = Auth::user();
+//        $user = Auth::user();
         $product = Product::find($id);
         $category = Category::find($product->category_id);
         $categories = Category::get();
@@ -168,22 +169,22 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreProductRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $image_info = [];
-        if($request->hasFile('images')) {
-            $images = $request->file('images');
-            foreach ( $images as $key => $image){
-                $nameFile = $image->getClientOriginalName();
-                $url= 'storage/product/'.$nameFile;
-                Storage::disk('public')->putFileAs('product', $image, $nameFile);
-                $image_info[] = [
-                    'url' => $url,
-                    'nameFile' => $nameFile
-                ];
-            }
-        }
-
+//        $image_info = [];
+//        if($request->hasFile('images')) {
+//            $images = $request->file('images');
+//            foreach ( $images as $key => $image){
+//                $nameFile = $image->getClientOriginalName();
+//                $url= 'storage/product/'.$nameFile;
+//                Storage::disk('public')->putFileAs('product', $image, $nameFile);
+//                $image_info[] = [
+//                    'url' => $url,
+//                    'nameFile' => $nameFile
+//                ];
+//            }
+//        }
+//        dd(1);
         $name = $request->get('name');
         $slug = \Illuminate\Support\Str::slug($request->get('name'));
         $category_id = $request->get('category_id');
@@ -191,6 +192,7 @@ class ProductController extends Controller
         $sale_price = $request->get('sale_price');
         $content = $request->get('content');
         $status = $request->get('status');
+//        dd($name);
 
         $product = Product::Find($id);
         $product->name = $name;
@@ -203,13 +205,13 @@ class ProductController extends Controller
         $product->user_id = Auth::user()->id;
         $save = $product->save();
 
-        foreach ($image_info as $image){
-            $img = new Image();
-            $img->name = $image['nameFile'];
-            $img->path = $image['url'];
-            $img->product_id = $product->id;
-            $img->save();
-        }
+//        foreach ($image_info as $image){
+//            $img = new Image();
+//            $img->name = $image['nameFile'];
+//            $img->path = $image['url'];
+//            $img->product_id = $product->id;
+//            $img->save();
+//        }
         if ($save) {
             $request->session()->flash('success_update', 'Cập nhật sản phẩm thành công' . '<br>');
         } else {

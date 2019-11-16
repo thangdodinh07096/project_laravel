@@ -49,21 +49,27 @@
 
 	    });
 	    Route::group(['prefix' => 'shop'], function(){
+            Route::get('/product/{id?}', 'ShopController@showProduct');
 	        Route::get('/', 'ShopController@index')->name('frontend.shop');
+            Route::get('/show/{category_id?}', 'ShopController@show')->name('frontend.shop.cate');
 	    });
 	    //Quản lý danh mục sản phẩm
 	    Route::group(['prefix' => 'cart'], function(){
 	        Route::get('/', 'CartController@index')->name('frontend.cart.index');
-	        Route::get('/add/{id}', 'CartController@add')->name('frontend.cart.add');
-	    });
+	        Route::get('/add/{id?}', 'CartController@add')->name('frontend.cart.add');
+            Route::get('/delete/{id?}', 'CartController@delete')->name('frontend.cart.delete');
+
+        });
 	    Route::group(['prefix' => 'contact'], function(){
 	        Route::get('/', 'ContactController@index')->name('frontend.contact');
 	    });
 	});
 
     Auth::routes();
-     Route::get('/auth/logout', 'LoginController@logout')->name('auth.logout');
-    // Route::get('/', 'LoginController@logout')->name('auth.logout');
+    Route::prefix('logout')->namespace('Auth')->group(function () {
+        Route::get('/', 'LoginController@logout')->name('logout');
+    });
+
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('set', 'SessionController@set');

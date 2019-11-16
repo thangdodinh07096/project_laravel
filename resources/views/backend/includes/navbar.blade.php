@@ -108,7 +108,7 @@
                         <i class="fas fa-file mr-2"></i> 3 new reports
                         <span class="float-right text-muted text-sm">2 days</span>
                     </a>
-                    <a href="{{route('auth.logout')}}" class="dropdown-item dropdown-footer btn">Log Out</a>
+                    <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer btn">Log Out</a>
 
                 </div>
             </li>

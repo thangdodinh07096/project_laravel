@@ -25,15 +25,13 @@ Cart
                                 @foreach($all as $product)
 
 								<li class="cart_item clearfix">
-									<div class="cart_item_image"><img src="/frontend/images/shopping_cart.jpg" alt=""></div>
+									<div class="cart_item_image">
+                                                <img style="max-width: 75%" src="/{{$product->options->image}}" alt="">
+                                    </div>
 									<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
 										<div class="cart_item_name cart_info_col">
 											<div class="cart_item_title">Name</div>
-											<div class="cart_item_text">{{$product->name}}</div>
-										</div>
-										<div class="cart_item_color cart_info_col">
-											<div class="cart_item_title">Color</div>
-											<div class="cart_item_text"><span style="background-color:#999999;"></span>Silver</div>
+											<div class="cart_item_text"><a href="/online/shop/product/{{$product->id}}">{{$product->name}}</a></div>
 										</div>
 										<div class="cart_item_quantity cart_info_col">
 											<div class="cart_item_title">Quantity</div>
@@ -41,12 +39,13 @@ Cart
 										</div>
 										<div class="cart_item_price cart_info_col">
 											<div class="cart_item_title">Price</div>
-											<div class="cart_item_text">{{$product->price}}</div>
+											<div class="cart_item_text">{{number_format($product->price)}} VND</div>
 										</div>
 										<div class="cart_item_total cart_info_col">
 											<div class="cart_item_title">Total</div>
-											<div class="cart_item_text">{{$product->qty*$product->price}}</div>
+											<div class="cart_item_text">{{number_format($product->qty*$product->price)}} VND</div>
 										</div>
+{{--                                        <a class="btn btn-danger" href="/online/cart/delete/{{ $product->id }}">DEL</a>--}}
 									</div>
 								</li>
 {{--                                    {{$total+=$product->qty*$product->price}}--}}

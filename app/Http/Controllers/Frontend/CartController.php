@@ -24,14 +24,21 @@ class CartController extends Controller
         });
 
         $all = Cart::content();
-
-        return view('frontend.cart')->with(['categories'=>$categories, 'all' => $all]);
+//        dd($all);
+        $cart = Cart::count();
+        return view('frontend.cart')->with(['categories'=>$categories, 'all' => $all,'cart' => $cart]);
     }
 
     public function add($id){
 //        dd($id);
         $product = Product::find($id);
-        Cart::add($id, $product->name, 1, $product->sale_price);
+        $product_iamges = Product::with('images')->find($id);
+        $images = $product_iamges->images;
+        Cart::add($id, $product->name, 1, $product->sale_price,0, ['image'=> $images[0]->path]);
         return redirect()->route('frontend.cart.index');
     }
+//    public function delete($id){
+//        Cart::remove($id);
+//        return redirect()->route('frontend.cart.index');
+//    }
 }

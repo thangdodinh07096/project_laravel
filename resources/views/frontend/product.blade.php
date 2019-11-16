@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-Shop
+    Shop
 @endsection
 
 @section('link-css')
@@ -39,7 +39,7 @@ Shop
                             <div class="sidebar_title">Categories</div>
                             <ul class="sidebar_categories">
                                 @foreach($categories as $cate)
-                                <li><a href="/online/shop/show/{{$cate->id}}">{{$cate->name}}</a></li>
+                                    <li><a href="/online/shop/show/{{$cate->id}}">{{$cate->name}}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -86,7 +86,7 @@ Shop
 
                     <div class="shop_content">
                         <div class="shop_bar clearfix">
-                            <div class="shop_product_count"><span>#</span> products found</div>
+                            <div class="shop_product_count"><span>186</span> products found</div>
                             <div class="shop_sorting">
                                 <span>Sort by:</span>
                                 <ul>
@@ -105,43 +105,158 @@ Shop
                         <div class="product_grid">
                             <div class="product_grid_border"></div>
 
-                            @foreach($products as $product)
-                            <!-- Product Item -->
-                            <div class="product_item">
-                                <div class="product_border"></div>
-                                @foreach($product->images as $key => $image)
-                                    @if($key == 0)
-                                        <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/{{$image['path']}}" alt=""></div>
-                                    @endif
-                                @endforeach
-                                <div class="product_content">
-                                    <div class="product_price">{{number_format($product->origin_price)}}<span>{{number_format($product->sale_price)}}</span></div>
-                                    <div class="product_name"><div><a href="/online/shop/product/{{$product->id}}" tabindex="0">{{$product->name}}</a></div></div>
+                        {{--                            <!-- Product Item -->--}}
+                        {{--                            <div class="product_item is_new">--}}
+                        {{--                                <div class="product_border"></div>--}}
+                        {{--                                <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/frontend/images/new_5.jpg" alt=""></div>--}}
+                        {{--                                <div class="product_content">--}}
+                        {{--                                    <div class="product_price">$225</div>--}}
+                        {{--                                    <div class="product_name"><div><a href="#" tabindex="0">Philips BT6900A</a></div></div>--}}
+                        {{--                                </div>--}}
+                        {{--                                <div class="product_fav"><i class="fas fa-heart"></i></div>--}}
+                        {{--                                <ul class="product_marks">--}}
+                        {{--                                    <li class="product_mark product_discount">-25%</li>--}}
+                        {{--                                    <li class="product_mark product_new">new</li>--}}
+                        {{--                                </ul>--}}
+                        {{--                            </div>--}}
+
+                        {{--                            <!-- Product Item -->--}}
+                        {{--                            <div class="product_item discount">--}}
+                        {{--                                <div class="product_border"></div>--}}
+                        {{--                                <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/frontend/images/featured_1.png" alt=""></div>--}}
+                        {{--                                <div class="product_content">--}}
+                        {{--                                    <div class="product_price">$225<span>$300</span></div>--}}
+                        {{--                                    <div class="product_name"><div><a href="#" tabindex="0">Huawei MediaPad...</a></div></div>--}}
+                        {{--                                </div>--}}
+                        {{--                                <div class="product_fav"><i class="fas fa-heart"></i></div>--}}
+                        {{--                                <ul class="product_marks">--}}
+                        {{--                                    <li class="product_mark product_discount">-25%</li>--}}
+                        {{--                                    <li class="product_mark product_new">new</li>--}}
+                        {{--                                </ul>--}}
+                        {{--                            </div>--}}
+
+                        {{--                            <!-- Product Item -->--}}
+                        {{--                            <div class="product_item">--}}
+                        {{--                                <div class="product_border"></div>--}}
+                        {{--                                <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/frontend/images/featured_2.png" alt=""></div>--}}
+                        {{--                                <div class="product_content">--}}
+                        {{--                                    <div class="product_price">$379</div>--}}
+                        {{--                                    <div class="product_name"><div><a href="#" tabindex="0">Apple iPod shuffle</a></div></div>--}}
+                        {{--                                </div>--}}
+                        {{--                                <div class="product_fav"><i class="fas fa-heart"></i></div>--}}
+                        {{--                                <ul class="product_marks">--}}
+                        {{--                                    <li class="product_mark product_discount">-25%</li>--}}
+                        {{--                                    <li class="product_mark product_new">new</li>--}}
+                        {{--                                </ul>--}}
+                        {{--                            </div>--}}
+
+                        {{--                            <!-- Product Item -->--}}
+                        {{--                            <div class="product_item">--}}
+                        {{--                                <div class="product_border"></div>--}}
+                        {{--                                <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/frontend/images/featured_3.png" alt=""></div>--}}
+                        {{--                                <div class="product_content">--}}
+                        {{--                                    <div class="product_price">$225</div>--}}
+                        {{--                                    <div class="product_name"><div><a href="#" tabindex="0">Sony MDRZX310W</a></div></div>--}}
+                        {{--                                </div>--}}
+                        {{--                                <div class="product_fav"><i class="fas fa-heart"></i></div>--}}
+                        {{--                                <ul class="product_marks">--}}
+                        {{--                                    <li class="product_mark product_discount">-25%</li>--}}
+                        {{--                                    <li class="product_mark product_new">new</li>--}}
+                        {{--                                </ul>--}}
+                        {{--                            </div>--}}
+
+                        {{--                            <!-- Product Item -->--}}
+                        {{--                            <div class="product_item is_new">--}}
+                        {{--                                <div class="product_border"></div>--}}
+                        {{--                                <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/frontend/images/featured_4.png" alt=""></div>--}}
+                        {{--                                <div class="product_content">--}}
+                        {{--                                    <div class="product_price">$379</div>--}}
+                        {{--                                    <div class="product_name"><div><a href="#" tabindex="0">LUNA Smartphone</a></div></div>--}}
+                        {{--                                </div>--}}
+                        {{--                                <div class="product_fav"><i class="fas fa-heart"></i></div>--}}
+                        {{--                                <ul class="product_marks">--}}
+                        {{--                                    <li class="product_mark product_discount">-25%</li>--}}
+                        {{--                                    <li class="product_mark product_new">new</li>--}}
+                        {{--                                </ul>--}}
+                        {{--                            </div>--}}
+
+                        {{--                            <!-- Product Item -->--}}
+                        {{--                            <div class="product_item is_new">--}}
+                        {{--                                <div class="product_border"></div>--}}
+                        {{--                                <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/frontend/images/shop_1.jpg" alt=""></div>--}}
+                        {{--                                <div class="product_content">--}}
+                        {{--                                    <div class="product_price">$379</div>--}}
+                        {{--                                    <div class="product_name"><div><a href="#" tabindex="0">Canon IXUS 175...</a></div></div>--}}
+                        {{--                                </div>--}}
+                        {{--                                <div class="product_fav"><i class="fas fa-heart"></i></div>--}}
+                        {{--                                <ul class="product_marks">--}}
+                        {{--                                    <li class="product_mark product_discount">-25%</li>--}}
+                        {{--                                    <li class="product_mark product_new">new</li>--}}
+                        {{--                                </ul>--}}
+                        {{--                            </div>--}}
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h3 style="font-weight: 550;">
+                                            <p>Id: {{$product->id}}</p>
+                                            <p>Tên sản phẩm: {{$product->name}}</p>
+                                            <p>Danh mục sản phẩm: {{$category->name}}</p>
+                                            <p>Giá gốc: {{$product->origin_price}}</p>
+                                            <p>Giá bán: {{$product->sale_price}}</p>
+                                            <p>Trạng thái: @if($product->status == -1) Đang nhập @endif
+                                                @if($product->status == 0)  Mở bán @endif
+                                                @if($product->status == 1) Hết hàng @endif
+                                            </p>
+                                        </h3>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h3>Ảnh sản phẩm</h3>
+                                        {{--                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">--}}
+                                        {{--                    <div class="carousel-inner">--}}
+                                        {{--                        <div class="carousel-item active">--}}
+                                        {{--                            <img class="d-block w-100" src="..." alt="First slide">--}}
+                                        {{--                        </div>--}}
+                                        {{--                        <div class="carousel-item">--}}
+                                        {{--                            <img class="d-block w-100" src="..." alt="Second slide">--}}
+                                        {{--                        </div>--}}
+                                        {{--                        <div class="carousel-item">--}}
+                                        {{--                            <img class="d-block w-100" src="..." alt="Third slide">--}}
+                                        {{--                        </div>--}}
+                                        {{--                    </div>--}}
+                                        {{--                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">--}}
+                                        {{--                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>--}}
+                                        {{--                        <span class="sr-only">Previous</span>--}}
+                                        {{--                    </a>--}}
+                                        {{--                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">--}}
+                                        {{--                        <span class="carousel-control-next-icon" aria-hidden="true"></span>--}}
+                                        {{--                        <span class="sr-only">Next</span>--}}
+                                        {{--                    </a>--}}
+                                        {{--                </div>--}}
+                                        @foreach($product->images as $image)
+                                            <img style="width: 120px" src="/{{$image->path}}" alt="">
+                                        @endforeach
+                                    </div>
+                                    <h2 class="col-lg-12">
+                                        <p>Mô tả: {!! $product->content !!}</p>
+                                    </h2>
                                 </div>
-                                <div class="product_fav"><i class="fas fa-heart"></i></div>
-                                <ul class="product_marks">
-                                    <li class="product_mark product_discount">-25%</li>
-                                    <li class="product_mark product_new">new</li>
-                                </ul>
-                                <a href="/online/cart/add/{{$product->id}}" style="font-size: 15px" class="product_cart_button btn">Add to Cart</a>
                             </div>
-                            @endforeach
 
                         </div>
 
                         <!-- Shop Page Navigation -->
 
-{{--                        <div class="shop_page_nav d-flex flex-row">--}}
-{{--                            <div class="page_prev d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-left"></i></div>--}}
-{{--                            <ul class="page_nav d-flex flex-row">--}}
-{{--                                <li><a href="#">1</a></li>--}}
-{{--                                <li><a href="#">2</a></li>--}}
-{{--                                <li><a href="#">3</a></li>--}}
-{{--                                <li><a href="#">...</a></li>--}}
-{{--                                <li><a href="#">21</a></li>--}}
-{{--                            </ul>--}}
-{{--                            <div class="page_next d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-right"></i></div>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="shop_page_nav d-flex flex-row">--}}
+                        {{--                            <div class="page_prev d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-left"></i></div>--}}
+                        {{--                            <ul class="page_nav d-flex flex-row">--}}
+                        {{--                                <li><a href="#">1</a></li>--}}
+                        {{--                                <li><a href="#">2</a></li>--}}
+                        {{--                                <li><a href="#">3</a></li>--}}
+                        {{--                                <li><a href="#">...</a></li>--}}
+                        {{--                                <li><a href="#">21</a></li>--}}
+                        {{--                            </ul>--}}
+                        {{--                            <div class="page_next d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-right"></i></div>--}}
+                        {{--                        </div>--}}
 
                     </div>
 
